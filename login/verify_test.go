@@ -26,7 +26,7 @@ func TestVerify_Valid(t *testing.T) {
 }
 
 func TestVerify_UnsupportedVersion(t *testing.T) {
-	for _, v := range []int{-1, 0, 2, 10} {
+	for _, v := range []int{-1, 0, 3, 10} {
 		err := login.Verify(challengeHidden, challengeVisual, publicKey, signature, v)
 		assert.EqualError(t, err, fmt.Sprintf("unsupported version: %d", v))
 	}
