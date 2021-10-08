@@ -20,7 +20,7 @@ const ( // valid login info
 	version         = 2
 )
 
-func Verify_Valid(t *testing.T) {
+func TestVerify_Valid(t *testing.T) {
 	err := login.Verify(challengeHidden, challengeVisual, publicKey, signature, version)
 	assert.NoError(t, err)
 }
