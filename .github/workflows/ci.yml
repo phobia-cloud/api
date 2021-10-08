@@ -48,3 +48,4 @@ jobs:
         uses: guyarb/golang-test-annotations@v0.5.0
         with:
           test-results: test.json
+          package-name: phobia.cloud/api
