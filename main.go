@@ -78,8 +78,5 @@ func main() {
 	http.HandleFunc("/challenge", challengeHandler)
 	http.HandleFunc("/login", loginHandler)
 
-	err := http.ListenAndServe(":5050", nil)
-	if err != nil {
-		panic(err)
-	}
+	log.Fatal(http.ListenAndServe(":5050", nil))
 }
