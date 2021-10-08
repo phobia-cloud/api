@@ -1,4 +1,4 @@
-name: golangci-lint
+name: ci
 on:
   push:
     tags:
@@ -35,3 +35,17 @@ jobs:
 
           # Optional: if set to true then the action don't cache or restore ~/.cache/go-build.
           # skip-build-cache: true
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: run tests
+        run: go test -json ./... > test.json
+
+      - name: Annotate tests
+        if: always()
+        uses: guyarb/golang-test-annotations@v0.5.0
+        with:
+          test-results: test.json
+          package-name: phobia.cloud/api
